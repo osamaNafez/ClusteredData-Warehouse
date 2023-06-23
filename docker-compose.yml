@@ -1,0 +1,28 @@
+services:
+  database:
+    container_name: database
+    image: mysql:8.0
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Shatat1999$$
+      - MYSQL_DATABASE=WAERHOUSE
+      - MYSQL_ROOT_PASSWORD=Shatat1999$$
+    ports:
+      - "3306:3306"
+    restart: always
+
+  application:
+    image: osamanafez/clustereddata-warehouse
+    container_name: application
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    restart: always
+    depends_on:
+      - database
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/WAERHOUSE?createDatabaseIfNotExist=true
+      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_PASSWORD=Shatat1999$$
