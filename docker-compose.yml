@@ -3,7 +3,7 @@ services:
     container_name: database
     image: mysql:8.0
     environment:
-      - MYSQL_USER=root
+      - MYSQL_USER=osama
       - MYSQL_PASSWORD=Shatat1999$$
       - MYSQL_DATABASE=WAERHOUSE
       - MYSQL_ROOT_PASSWORD=Shatat1999$$
@@ -24,5 +24,5 @@ services:
       - database
     environment:
       - SPRING_DATASOURCE_URL=jdbc:mysql://database:3306/WAERHOUSE?createDatabaseIfNotExist=true
-      - SPRING_DATASOURCE_USERNAME=root
+      - SPRING_DATASOURCE_USERNAME=osama
       - SPRING_DATASOURCE_PASSWORD=Shatat1999$$
